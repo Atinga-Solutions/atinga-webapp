@@ -1,18 +1,23 @@
-import { ModeToggle } from '@/components/mode-toggle'
-import { Button } from '@/components/ui/button'
-import React from 'react'
+// src/app/page.tsx
 
-const Home = () => {
+import Header from "@/components/header-section";
+
+export default function Home() {
   return (
-    <div className='items-center gap-12 flex flex-col  w-full min-h-screen justify-center'>
-      <h1 className='text-4xl'>Atinga Solutions</h1>
+    <div className="relative min-h-screen">
+      {/* Background gradients */}
+      <div className="pointer-events-none fixed inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+        <div className="absolute right-0 top-0 h-[500px] w-[500px] bg-blue-500/10 blur-[100px]" />
+        <div className="absolute bottom-0 left-0 h-[500px] w-[500px] bg-purple-500/10 blur-[100px]" />
+      </div>
 
-      <Button className='w-32'>
-        Home
-      </Button>
-      <ModeToggle />
+      <div className="relative z-10">
+        <Header />
+  
+      </div>
+
     </div>
+
   )
 }
-
-export default Home
