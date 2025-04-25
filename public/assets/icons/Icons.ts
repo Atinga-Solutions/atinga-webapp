@@ -1,0 +1,1 @@
+export  {default as AtingaLogo } from "./atinga-solutions-logo.jpeg";
