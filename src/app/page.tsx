@@ -1,5 +1,6 @@
 // src/app/page.tsx
 
+import Footer from "@/components/footer-section";
 import Header from "@/components/header-section";
 
 
@@ -54,6 +55,10 @@ export default function Home() {
             </div>
           </div>
         </section>
+        {/* Placeholder for the footer section */}
+        <footer className="mb-0">
+          <Footer />
+        </footer>
       </div>
     </div>
   )
