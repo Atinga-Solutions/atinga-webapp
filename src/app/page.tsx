@@ -1,6 +1,5 @@
 // src/app/page.tsx
 
-import Footer from "@/components/footer-section";
 import Header from "@/components/header-section";
 
 
@@ -31,7 +30,7 @@ export default function Home() {
       <div className="relative z-10">
         <Header />
         
-        {/* Hero section placeholder - you can expand on this */}
+        {/* Hero section placeholder - you can expand on this
         <section className="pt-32 pb-16 px-4">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center">
@@ -56,9 +55,9 @@ export default function Home() {
           </div>
         </section>
         {/* Placeholder for the footer section */}
-        <footer className="mb-0">
+        {/* <footer className="mb-0">
           <Footer />
-        </footer>
+        </footer>  */}
       </div>
     </div>
   )
