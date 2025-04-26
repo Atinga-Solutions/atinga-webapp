@@ -1,4 +1,3 @@
-import Header from '@/components/header-section'
 import React from 'react'
 
 const Services = () => {
@@ -26,7 +25,6 @@ const Services = () => {
             </div>
 
             <div className="relative z-10">
-                <Header />
                 <main className='flex items-center justify-center min-h-screen'>
                     <p className='text-4xl font-bold'>Services page</p>
                 </main>

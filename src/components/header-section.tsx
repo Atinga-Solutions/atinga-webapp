@@ -90,7 +90,7 @@ export default function Header() {
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${isActive(link.href)
+                                    className={`px-3.5 py-2 rounded-md text-sm font-medium transition-all duration-300 ${isActive(link.href)
                                         ? "bg-primary text-primary-foreground"
                                         : "hover:bg-secondary/80 hover:text-secondary-foreground hover:scale-105"
                                         }`}
@@ -102,7 +102,7 @@ export default function Header() {
                     </nav>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-4">
                         <ModeToggle />
 
 
@@ -152,15 +152,15 @@ export default function Header() {
 
                                     {/* Mobile Contact Button */}
                                     <Link href='/pages/get-quoatation'>
-                                    <Button
-                                        variant="default"
-                                        className="w-full mt-4 bg-gradient-to-r from-primary to-blue-600 text-primary-foreground hover:bg-primary/90 hover:shadow-lg transition-all duration-300"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                    >
-                                        Get a Quote
-                                    </Button>
+                                        <Button
+                                            variant="default"
+                                            className="w-full mt-4 bg-gradient-to-r from-primary to-blue-600 text-primary-foreground hover:bg-primary/90 hover:shadow-lg transition-all duration-300"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            Get a Quote
+                                        </Button>
                                     </Link>
-                       
+
                                 </nav>
                             </SheetContent>
                         </Sheet>
