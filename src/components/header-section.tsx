@@ -4,42 +4,30 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useTheme } from "next-themes"
-import { Menu, Sun, Moon, ChevronDown } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
 import { Button } from "./ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet"
 import Image from "next/image"
 import { AtingaLogo } from "../../public/assets/icons/Icons"
+import { Menu } from "lucide-react"
+import { ModeToggle } from "./mode-toggle"
 
 const navigationLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/pages/about-us" },
     {
         name: "Services",
-        href: "/services",
-        subLinks: [
-            { name: "Web Development", href: "/services/web-development" },
-            { name: "Mobile Applications", href: "/services/mobile-applications" },
-            { name: "Fintech Solutions", href: "/services/fintech" },
-            { name: "Machine Learning", href: "/services/machine-learning" },
-            { name: "ERP Systems", href: "/services/erp" },
-            { name: "POS Systems", href: "/services/pos" },
-            { name: "CRM Systems", href: "/services/crm" },
-            { name: "Blockchain", href: "/services/blockchain" },
-            { name: "UI / UX", href: "/services/ui-ux" }
-        ]
+        href: "/pages/services",
     },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: "projects", href: "/pages/projects" },
+    { name: "Contact", href: "/pages/contact-page" },
+    { name: "careers", href: "/pages/careers" },
+
 ]
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const pathname = usePathname()
-    const { theme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
 
     // Handle scroll effect for header
@@ -67,12 +55,6 @@ export default function Header() {
         }
         return pathname?.startsWith(href)
     }
-
-    // Check if a sublink is active
-    const isSubLinkActive = (href: string) => {
-        return pathname === href
-    }
-
     if (!mounted) {
         return null // Avoid hydration mismatch
     }
@@ -84,7 +66,7 @@ export default function Header() {
                 : "bg-transparent py-5"
                 }`}
         >
-            <div className="container mx-auto px-4 lg:px-8">
+            <div className="container mx-auto px-4 lg:px-0.5">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center group">
@@ -94,7 +76,7 @@ export default function Header() {
                                 alt="Atinga Solutions"
                                 width={150}
                                 height={100}
-                                className="h-12 md:h-20 rounded-full w-auto object-contain transition-transform duration-300 group-hover:scale-200"
+                                className="h-12 md:h-28 rounded-full w-auto object-contain transition-transform duration-300 group-hover:scale-200"
                                 priority
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
@@ -102,39 +84,9 @@ export default function Header() {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex items-center space-x-1">
+                    <nav className="hidden lg:flex items-center space-x-3">
                         {navigationLinks.map((link) => (
-                            link.subLinks ? (
-                                <DropdownMenu key={link.name}>
-                                    <DropdownMenuTrigger asChild>
-                                        <Button
-                                            variant={isActive(link.href) ? "default" : "ghost"}
-                                            className={`px-3 py-2 text-sm font-medium transition-all duration-300 ${isActive(link.href)
-                                                ? "text-primary-foreground bg-primary"
-                                                : "hover:bg-secondary/80 hover:text-secondary-foreground hover:scale-105"
-                                                }`}
-                                        >
-                                            {link.name}
-                                            <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
-                                        </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="center" className="w-48 p-1 animate-in fade-in-80 slide-in-from-top-5">
-                                        {link.subLinks.map((subLink) => (
-                                            <DropdownMenuItem key={subLink.name} asChild>
-                                                <Link
-                                                    href={subLink.href}
-                                                    className={`w-full rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ${isSubLinkActive(subLink.href)
-                                                        ? "bg-primary text-primary-foreground"
-                                                        : "hover:bg-secondary/80 hover:text-secondary-foreground"
-                                                        }`}
-                                                >
-                                                    {subLink.name}
-                                                </Link>
-                                            </DropdownMenuItem>
-                                        ))}
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
-                            ) : (
+                            (
                                 <Link
                                     key={link.name}
                                     href={link.href}
@@ -151,20 +103,8 @@ export default function Header() {
 
                     {/* Action Buttons */}
                     <div className="flex items-center space-x-2">
-                        {/* Theme Toggle */}
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                            className="text-foreground hover:bg-secondary/80 hover:text-secondary-foreground transition-transform duration-300 hover:scale-105"
-                            aria-label="Toggle theme"
-                        >
-                            {theme === "dark" ? (
-                                <Sun className="h-5 w-5 transition-all duration-500 rotate-0 hover:rotate-90" />
-                            ) : (
-                                <Moon className="h-5 w-5 transition-all duration-500 rotate-0 hover:-rotate-90" />
-                            )}
-                        </Button>
+                        <ModeToggle />
+
 
                         {/* Contact Button - Desktop */}
                         <Button
@@ -195,42 +135,23 @@ export default function Header() {
                                     </SheetTitle>
                                 </SheetHeader>
                                 <nav className="flex flex-col space-y-4">
-                                    {navigationLinks.map((link) => (
-                                        link.subLinks ? (
-                                            <div key={link.name} className="space-y-2">
-                                                <div className="px-2 text-base font-semibold">{link.name}</div>
-                                                <div className="pl-4 flex flex-col space-y-2">
-                                                    {link.subLinks.map((subLink) => (
-                                                        <Link
-                                                            key={subLink.name}
-                                                            href={subLink.href}
-                                                            className={`px-2 py-1.5 rounded-md text-sm font-medium transition-all duration-300 ${isSubLinkActive(subLink.href)
-                                                                ? "bg-primary text-primary-foreground"
-                                                                : "hover:bg-secondary/80 hover:text-secondary-foreground hover:translate-x-1"
-                                                                }`}
-                                                            onClick={() => setIsMobileMenuOpen(false)}
-                                                        >
-                                                            {subLink.name}
-                                                        </Link>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <Link
-                                                key={link.name}
-                                                href={link.href}
-                                                className={`px-2 py-2 rounded-md text-base font-medium transition-all duration-300 ${isActive(link.href)
-                                                    ? "bg-primary text-primary-foreground"
-                                                    : "hover:bg-secondary/80 hover:text-secondary-foreground hover:translate-x-1"
-                                                    }`}
-                                                onClick={() => setIsMobileMenuOpen(false)}
-                                            >
-                                                {link.name}
-                                            </Link>
-                                        )
+                                    {navigationLinks.map((link) => ((
+                                        <Link
+                                            key={link.name}
+                                            href={link.href}
+                                            className={`px-2 py-2 rounded-md text-base font-medium transition-all duration-300 ${isActive(link.href)
+                                                ? "bg-primary text-primary-foreground"
+                                                : "hover:bg-secondary/80 hover:text-secondary-foreground hover:translate-x-1"
+                                                }`}
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    )
                                     ))}
 
                                     {/* Mobile Contact Button */}
+                                    <Link href='/pages/get-quoatation'>
                                     <Button
                                         variant="default"
                                         className="w-full mt-4 bg-gradient-to-r from-primary to-blue-600 text-primary-foreground hover:bg-primary/90 hover:shadow-lg transition-all duration-300"
@@ -238,6 +159,8 @@ export default function Header() {
                                     >
                                         Get a Quote
                                     </Button>
+                                    </Link>
+                       
                                 </nav>
                             </SheetContent>
                         </Sheet>

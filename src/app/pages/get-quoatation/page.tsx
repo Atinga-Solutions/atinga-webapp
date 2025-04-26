@@ -1,7 +1,7 @@
 import Header from '@/components/header-section'
 import React from 'react'
 
-const ContactPage = () => {
+const GetQuotation = () => {
     return (
         <div className="relative min-h-screen">
             {/* Background gradients */}
@@ -28,7 +28,7 @@ const ContactPage = () => {
             <div className="relative z-10">
                 <Header />
                 <main className='flex items-center justify-center min-h-screen'>
-                    <p className='text-4xl font-bold'>Contact page</p>
+                    <p className='text-4xl font-bold'>Get Quotation Page</p>
                 </main>
 
 
@@ -37,4 +37,4 @@ const ContactPage = () => {
     )
 }
 
-export default ContactPage
+export default GetQuotation
