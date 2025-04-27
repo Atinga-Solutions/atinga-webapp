@@ -18,7 +18,7 @@ const navigationLinks = [
         name: "Services",
         href: "/pages/services",
     },
-    { name: "projects", href: "/pages/projects" },
+    // { name: "projects", href: "/pages/projects" },
     { name: "Contact", href: "/pages/contact-page" },
     { name: "careers", href: "/pages/careers" },
 
@@ -107,12 +107,16 @@ export default function Header() {
 
 
                         {/* Contact Button - Desktop */}
+                        <Link href='/pages/contact-page'>
                         <Button
                             variant="default"
-                            className="hidden md:inline-flex bg-gradient-to-r from-primary to-blue-600 text-primary-foreground hover:bg-primary/90 hover:shadow-lg transition-all duration-300 hover:scale-105"
+                            className="hidden lg:inline-flex bg-gradient-to-r from-primary to-blue-600 text-primary-foreground hover:bg-primary/90 hover:shadow-lg transition-all duration-300"
                         >
-                            Get a Quote
+                            Contact Us
                         </Button>
+                        </Link>
+
+                       
 
                         {/* Mobile Menu Button */}
                         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -151,13 +155,13 @@ export default function Header() {
                                     ))}
 
                                     {/* Mobile Contact Button */}
-                                    <Link href='/pages/get-quoatation'>
+                                    <Link href="/get-quoatation">
                                         <Button
                                             variant="default"
                                             className="w-full mt-4 bg-gradient-to-r from-primary to-blue-600 text-primary-foreground hover:bg-primary/90 hover:shadow-lg transition-all duration-300"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
-                                            Get a Quote
+                                            Contact Us
                                         </Button>
                                     </Link>
 

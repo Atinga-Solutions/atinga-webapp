@@ -1,10 +1,9 @@
 // src/components/value-proposition.tsx
 'use client'
-import { useState } from 'react';
-import { CheckCircle, Award, Users, TrendingUp, X } from 'lucide-react';
+import { CheckCircle, Award, Users, TrendingUp } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ValueProposition() {
-    const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
     const values = [
         {
@@ -74,15 +73,17 @@ export default function ValueProposition() {
                     <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                         Get a personalized quote tailored to your specific needs and discover how our solutions can help you achieve your business goals.
                     </p>
+                    <Link href="/pages/contact-page">
                     <button
-                        onClick={() => setIsQuoteModalOpen(true)}
                         className="bg-gradient-primary text-primary-foreground font-medium py-3 px-8 rounded-lg shadow-md hover-scale inline-flex items-center justify-center text-lg"
                     >
-                        Get a Custom Quote
+                        Let us Know
                     </button>
+                    </Link>
+    
                 </div>
 
-                {/* Quote Request Modal */}
+                {/* Quote Request Modal
                 {isQuoteModalOpen && (
                     <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
                         <div className="bg-card border border-border rounded-xl shadow-xl w-full max-w-lg mx-auto animate-scale-in overflow-hidden">
@@ -171,7 +172,7 @@ export default function ValueProposition() {
                             </div>
                         </div>
                     </div>
-                )}
+                )} */}
             </div>
         </section>
     );
