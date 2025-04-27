@@ -42,19 +42,19 @@ trap 'handle_error $LINENO "$BASH_COMMAND"' ERR
 
 # Configuration and Initialization
 initialize_configuration() {
-    # Traverse up the directory tree to find globalenv.config
+    # Traverse up the directory tree to find globalenvdev.config
     local dir
     dir=$(pwd)
     while [[ "$dir" != "/" ]]; do
-        if [[ -f "$dir/globalenv.config" ]]; then
+        if [[ -f "$dir/globalenvdev.config" ]]; then
             # shellcheck source=/dev/null
-            source "$dir/globalenv.config"
+            source "$dir/globalenvdev.config"
             return 0
         fi
         dir=$(dirname "$dir")
     done
 
-    log_error "globalenv.config not found"
+    log_error "globalenvdev.config not found"
     exit 1
 }
 
@@ -149,13 +149,11 @@ deploy_container_app() {
     local container_app_name="${ENVIRONMENT_PREFIX}-${PROJECT_PREFIX}-worker"
     local registry_url="${ENVIRONMENT_PREFIX}${PROJECT_PREFIX}contregistry.azurecr.io"
     local repo_url="https://github.com/Atinga-Solutions/atinga-infrah-prototype-web"
-
     local branch="main"
 
     log_info "Deploying Container App: $container_app_name"
 
-    # Deploy container app
- # Deploy container app
+    # Deploy container app with valid parameters
     az containerapp up \
         --name "$container_app_name" \
         --resource-group "$PROJECT_RESOURCE_GROUP" \
@@ -164,9 +162,7 @@ deploy_container_app() {
         --branch "$branch" \
         --registry-server "$registry_url" \
         --ingress external \
-        --target-port 8000 \
-        --env-vars \
-
+        --target-port 3000
 
 
     # Update container app settings
