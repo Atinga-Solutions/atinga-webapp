@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle, Clock, Users, BarChart4, Code, FileCode2, Laptop } from "lucide-react";
 import { notFound } from "next/navigation";
 import { cloudImg, CustomSystems, DataAnalysisimage, DevopsImg, MobileDevImage, UiUxImage } from "../../../../../public/assets/images/Images";
+import { Metadata } from "next";
 
 // Define comprehensive service details type
 type DetailedService = {
@@ -836,12 +837,27 @@ function getRelatedServices(slugs: string[]): DetailedService[] {
 }
 
 // Page component that handles the dynamic route
-export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const service = getServiceBySlug(params.slug);
+    
 
-
+  
     if (!service) {
-        notFound();
+        return {
+          title: 'Service Not Found'
+        };
+      }
+      return {
+        title: `${service.title} | Atinga Solutions`,
+        description: service.description
+      };
+    }
+    // Then make sure your page component is marked as async
+export default async function ServiceDetailPage({ params }: { params: { slug: string } }) {
+    const service = getServiceBySlug(params.slug);
+    
+    if (!service) {
+      notFound();
     }
 
     const relatedServices = getRelatedServices(service.relatedServices);
