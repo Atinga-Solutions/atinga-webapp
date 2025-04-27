@@ -838,13 +838,14 @@ function getRelatedServices(slugs: string[]): DetailedService[] {
 // Page component that handles the dynamic route
 export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
     const service = getServiceBySlug(params.slug);
-    
+
+
     if (!service) {
         notFound();
     }
-    
+
     const relatedServices = getRelatedServices(service.relatedServices);
-    
+
     return (
         <div className="bg-background min-h-screen">
             {/* Hero Section */}
@@ -864,8 +865,8 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                         </div>
                         <div className="w-full md:w-1/2 mt-8 md:mt-0">
                             <div className="rounded-xl overflow-hidden shadow-lg">
-                                <Image 
-                                    src={service.heroImage} 
+                                <Image
+                                    src={service.heroImage}
                                     alt={service.title}
                                     width={700}
                                     height={450}
@@ -876,7 +877,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </div>
                 </div>
             </section>
-            
+
             {/* Approach Section */}
             <section className="py-16 bg-muted/50">
                 <div className="container px-4 mx-auto">
@@ -894,7 +895,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </div>
                 </div>
             </section>
-            
+
             {/* Benefits Section */}
             <section className="py-16">
                 <div className="container px-4 mx-auto">
@@ -909,7 +910,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </div>
                 </div>
             </section>
-            
+
             {/* Features Section */}
             <section className="py-16 bg-muted/50">
                 <div className="container px-4 mx-auto">
@@ -924,7 +925,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </div>
                 </div>
             </section>
-            
+
             {/* Process Section */}
             <section className="py-16">
                 <div className="container px-4 mx-auto">
@@ -942,7 +943,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </div>
                 </div>
             </section>
-            
+
             {/* Technologies Section */}
             <section className="py-16 bg-muted/50">
                 <div className="container px-4 mx-auto">
@@ -956,7 +957,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </div>
                 </div>
             </section>
-            
+
             {/* FAQ Section */}
             <section className="py-16">
                 <div className="container px-4 mx-auto">
@@ -971,7 +972,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </div>
                 </div>
             </section>
-            
+
             {/* Case Studies Section */}
             <section className="py-16 bg-muted/50">
                 <div className="container px-4 mx-auto">
@@ -981,7 +982,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                             <Link href={caseStudy.link} key={index} className="group">
                                 <div className="rounded-xl overflow-hidden shadow-md transition-all group-hover:shadow-lg">
                                     <div className="relative h-52">
-                                        <Image 
+                                        <Image
                                             src={caseStudy.image}
                                             alt={caseStudy.title}
                                             fill
@@ -998,7 +999,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </div>
                 </div>
             </section>
-            
+
             {/* Related Services Section */}
             <section className="py-16">
                 <div className="container px-4 mx-auto">
@@ -1015,7 +1016,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </div>
                 </div>
             </section>
-            
+
             {/* CTA Section */}
             <section className="py-16 bg-primary/5">
                 <div className="container px-4 mx-auto text-center">
