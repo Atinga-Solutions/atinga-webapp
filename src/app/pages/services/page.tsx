@@ -13,7 +13,6 @@ type ServiceDetail = {
     longDescription: string;
     benefits: string[];
     technologies: string[];
-    caseStudyLink?: string;
 };
 
 export default function ServicesPage() {
@@ -31,7 +30,6 @@ export default function ServicesPage() {
                 "Improve conversion rates with optimized user flows"
             ],
             technologies: ["Figma", "Adobe XD", "Sketch", "InVision", "User Testing"],
-            caseStudyLink: "/case-studies/ui-transformation"
         },
         {
             title: "Mobile Development",
@@ -45,7 +43,6 @@ export default function ServicesPage() {
                 "Streamlined deployment and maintenance"
             ],
             technologies: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
-            caseStudyLink: "/case-studies/mobile-banking-app"
         },
         {
             title: "Cloud Solutions",
@@ -59,7 +56,6 @@ export default function ServicesPage() {
                 "Achieve high availability and disaster recovery"
             ],
             technologies: ["AWS", "Azure", "Google Cloud", "Kubernetes", "Terraform", "Docker"],
-            caseStudyLink: "/case-studies/cloud-migration"
         },
         {
             title: "DevOps Excellence",
@@ -73,7 +69,6 @@ export default function ServicesPage() {
                 "Consistent environments from development to production"
             ],
             technologies: ["Jenkins", "GitHub Actions", "GitLab CI", "Ansible", "Prometheus", "Grafana"],
-            caseStudyLink: "/case-studies/devops-transformation"
         },
         {
             title: "Custom Software",
@@ -87,7 +82,6 @@ export default function ServicesPage() {
                 "Full ownership and control of your software assets"
             ],
             technologies: ["JavaScript/TypeScript", "Python", "Java", "C#", ".NET", "Node.js", "React", "Angular", "Vue"],
-            caseStudyLink: "/case-studies/erp-system"
         },
         {
             title: "Data Analytics",
@@ -101,9 +95,18 @@ export default function ServicesPage() {
                 "Extract insights from unstructured data with AI"
             ],
             technologies: ["Python", "R", "TensorFlow", "Power BI", "Tableau", "Snowflake", "BigQuery"],
-            caseStudyLink: "/case-studies/predictive-analytics"
         }
     ];
+
+    // Map service titles to their respective slugs for dynamic routing
+    const serviceSlugMap: { [key: string]: string } = {
+        "UI/UX Design": "design",
+        "Mobile Development": "mobile",
+        "Cloud Solutions": "cloud",
+        "DevOps Excellence": "devops",
+        "Custom Software": "custom",
+        "Data Analytics": "analytics"
+    };
 
     return (
         <div className="bg-background text-foreground">
@@ -122,20 +125,7 @@ export default function ServicesPage() {
                         <p className="text-xl md:text-2xl text-muted-foreground mb-8">
                             Comprehensive technology solutions tailored to drive your business forward
                         </p>
-                        <div className="flex flex-wrap gap-4 justify-center">
-                            <Link
-                                href="#services"
-                                className="bg-gradient-primary text-primary-foreground px-8 py-3 rounded-lg shadow hover-scale"
-                            >
-                                Explore Services
-                            </Link>
-                            <Link
-                                href="/contact"
-                                className="bg-secondary text-secondary-foreground px-8 py-3 rounded-lg border border-border hover-scale"
-                            >
-                                Contact Us
-                            </Link>
-                        </div>
+   
                     </div>
                 </div>
             </section>
@@ -174,12 +164,12 @@ export default function ServicesPage() {
                                 <div className="p-6">
                                     <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                                     <p className="text-muted-foreground mb-4">{service.description}</p>
-                                    <a
-                                        href={`#${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                                    <Link
+                                        href={`/pages/services/${serviceSlugMap[service.title]}`}
                                         className="inline-flex items-center text-primary hover:text-primary/80 font-medium"
                                     >
                                         Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         ))}
@@ -237,14 +227,15 @@ export default function ServicesPage() {
                                     ))}
                                 </div>
 
-                                {service.caseStudyLink && (
+                                <div className="flex flex-wrap gap-4">
+
                                     <Link
-                                        href={service.caseStudyLink}
-                                        className="inline-flex items-center bg-primary text-primary-foreground px-6 py-3 rounded-lg shadow hover-scale"
+                                        href={`/pages/services/${serviceSlugMap[service.title]}`}
+                                        className="inline-flex items-center bg-secondary text-secondary-foreground px-6 py-3 rounded-lg border border-border hover-scale"
                                     >
-                                        View Case Study <ArrowRight className="ml-2 h-4 w-4" />
+                                        Full Service Details <ArrowRight className="ml-2 h-4 w-4" />
                                     </Link>
-                                )}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -378,17 +369,12 @@ export default function ServicesPage() {
                                 </p>
                                 <div className="flex flex-wrap gap-4">
                                     <Link
-                                        href="/contact"
-                                        className="bg-gradient-primary text-primary-foreground px-8 py-3 rounded-lg shadow hover-scale"
+                                        href="/contact-us"
+                                        className="bg-secondary text-secondary-foreground px-8 py-3 rounded-lg border border-border hover-scale"
                                     >
                                         Get in Touch
                                     </Link>
-                                    <Link
-                                        href="/case-studies"
-                                        className="bg-secondary text-secondary-foreground px-8 py-3 rounded-lg border border-border hover-scale"
-                                    >
-                                        View Case Studies
-                                    </Link>
+
                                 </div>
                             </div>
                             <div className="relative w-full max-w-md h-64">
@@ -400,7 +386,7 @@ export default function ServicesPage() {
                                             Schedule a free consultation with our experts
                                         </p>
                                         <Link
-                                            href="/schedule"
+                                            href="/contact-us"
                                             className="inline-flex items-center text-primary hover:text-primary/80 font-medium"
                                         >
                                             Book Now <ArrowRight className="ml-2 h-4 w-4" />

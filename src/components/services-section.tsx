@@ -18,37 +18,37 @@ export default function ServicesSection() {
             title: "UI/UX Design",
             description: "User-centered design that delights your customers and drives engagement with intuitive interfaces and seamless experiences.",
             image: UiUxImage,
-            link: "/services/design"
+            link: "/pages/services/design"
         },
         {
             title: "Mobile Development",
             description: "Custom mobile applications that work flawlessly across iOS and Android, with responsive interfaces and native performance.",
             image: MobileDevImage,
-            link: "/services/mobile"
+            link: "/pages/services/mobile"
         },
         {
             title: "Cloud Solutions",
             description: "Scalable infrastructure and cloud-native applications with security and performance at their core.",
             image: cloudImg,
-            link: "/services/cloud"
+            link: "/pages/services/cloud"
         },
         {
             title: "DevOps Excellence",
             description: "Streamline your development pipeline with continuous integration, delivery, and automated testing frameworks.",
             image: DevopsImg,
-            link: "/services/devops"
+            link: "/pages/services/devops"
         },
         {
             title: "Custom Software",
             description: "Bespoke software solutions built from the ground up to address your unique business challenges.",
             image: CustomSystems,
-            link: "/services/custom"
+            link: "/pages/services/custom"
         },
         {
             title: "Data Analytics",
             description: "Transform raw data into actionable insights with advanced analytics, visualization, and AI-powered predictions.",
             image: DataAnalysisimage,
-            link: "/services/analytics"
+            link: "/pages/services/analytics"
         }
     ];
 
