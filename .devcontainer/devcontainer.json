@@ -1,5 +1,5 @@
 {
-    "name": "e-cyber-docker",
+    "name":"atinga solutins dev",
     "dockerFile": "Dockerfile.dev",
     "customizations": {
       "vscode": {

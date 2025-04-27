@@ -103,7 +103,7 @@ export default function ServicesSection() {
                         <p className="text-muted-foreground">Discover the right solution for your specific needs.</p>
                     </div>
                     <Link
-                        href="/services"
+                        href="/pages/services"
                         className="mt-4 md:mt-0 bg-primary text-primary-foreground px-6 py-3 rounded-lg shadow hover-scale inline-flex"
                     >
                         View All Services
