@@ -14,7 +14,7 @@ export default function Home() {
       {/* Background gradients */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         {/* Main background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" /> */}
 
         {/* Primary color gradients - matches logo blue */}
         <div
@@ -28,14 +28,13 @@ export default function Home() {
           style={{ animationDuration: '12s' }}
         />
 
-        {/* Subtle accent gradient */}
         <div
           className="absolute bottom-40 right-20 h-[300px] w-[300px] bg-primary/5 blur-[80px] animate-pulse"
           style={{ animationDuration: '15s' }}
         />
 
         {/* Optional: grid or pattern overlay */}
-        <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] bg-center opacity-[0.02]" />
+        {/* <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] bg-center opacity-[0.02]" /> */}
       </div>
 
       <Header />

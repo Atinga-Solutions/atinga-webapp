@@ -6,7 +6,8 @@ import {
   Github,
   Mail,
   MapPin,
-  Phone
+  Phone,
+  Globe
 } from "lucide-react";
 import { AtingaLogo } from "../../public/assets/icons/Icons";
 
@@ -22,7 +23,9 @@ export default function Footer() {
         { name: "Web Development", href: "/services/web" },
         { name: "Cloud Solutions", href: "/services/cloud" },
         { name: "DevOps", href: "/services/devops" },
-        { name: "Custom Software", href: "/services/custom" }
+        { name: "Custom Software", href: "/services/custom" },
+        {namer: "Scrum", href: "/services/scrum"},
+        
       ]
     },
     {
@@ -48,18 +51,20 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-blue-50 dark:bg-blue-950 border-t-4 border-primary">
+    <footer className="border-t-4 border-primary">
       <div className="max-w-7xl mx-auto pt-16 pb-8 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
-              <div className="relative h-10 w-40">
+              <div className="relative h-10 w-40 rounded-full ">
                 <Image
                   src={AtingaLogo}
                   alt="Company Logo"
                   fill
-                  className="object-contain"
+                  className="object-contain rounded-full"
+
+
                 />
               </div>
             </Link>
@@ -77,11 +82,17 @@ export default function Footer() {
                 <div className="bg-blue-100 dark:bg-blue-800 p-2 rounded-full mr-3">
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
-                <span className="text-blue-800 dark:text-blue-100">+1 (555) 123-4567</span>
+                <span className="text-blue-800 dark:text-blue-100">+254 (115)(671)(073)</span>
               </div>
               <div className="flex items-center">
                 <div className="bg-blue-100 dark:bg-blue-800 p-2 rounded-full mr-3">
                   <Mail className="h-5 w-5 text-primary" />
+                </div>
+                <span className="text-blue-800 dark:text-blue-100">atingasolutions.com</span>
+              </div>
+              <div className="flex items-center">
+                <div className="bg-blue-100 dark:bg-blue-800 p-2 rounded-full mr-3">
+                  <Globe className="h-5 w-5 text-primary" />
                 </div>
                 <span className="text-blue-800 dark:text-blue-100">atingasolutions.com</span>
               </div>
