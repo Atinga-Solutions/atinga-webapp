@@ -72,7 +72,9 @@ const ContactPage = () => {
     } catch (error) {
       setSubmitResult({
         success: false,
-        message: "An unexpected error occurred. Please try again later."
+        message: "An unexpected error occurred. Please try again later.",
+        // @ts-ignore
+        error: error.message  
       });
     } finally {
       setIsSubmitting(false);

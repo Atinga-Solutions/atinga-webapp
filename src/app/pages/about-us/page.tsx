@@ -127,7 +127,7 @@ const AboutUs = () => {
                       <h3 className="text-xl font-semibold mb-1">Victor Mutethia</h3>
                       <p className="text-primary font-medium mb-3">CEO & Founder</p>
                       <p className="text-muted-foreground text-sm">
-                        With  8+ years in tech infrastructure, John leads our vision to transform Africa's digital landscape.
+                        With  8+ years in tech infrastructure, Victor leads our vision to transform Africas digital landscape
                       </p>
                     </div>
                   </div>
