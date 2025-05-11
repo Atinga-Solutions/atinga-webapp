@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bd3b25-4a38-4551-8cc6-95ec9fb38c28" name="Changes" comment="feat: Update footer and page components with new leadership profiles and contact information">
-      <change beforePath="$PROJECT_DIR$/globalenv.config" beforeDir="false" afterPath="$PROJECT_DIR$/globalenv.config" afterDir="false" />
-    </list>
+    <list default="true" id="d4bd3b25-4a38-4551-8cc6-95ec9fb38c28" name="Changes" comment="feat: Update footer and page components with new leadership profiles and contact information" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +104,7 @@
       <workItem from="1746904802119" duration="1063000" />
       <workItem from="1746926487050" duration="638000" />
       <workItem from="1746927390991" duration="493000" />
-      <workItem from="1746927899555" duration="5783000" />
+      <workItem from="1746927899555" duration="7180000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Update footer and page components with new leadership profiles and contact information">
       <option name="closed" value="true" />
