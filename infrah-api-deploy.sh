@@ -42,7 +42,7 @@ trap 'handle_error $LINENO "$BASH_COMMAND"' ERR
 
 # Configuration and Initialization
 initialize_configuration() {
-    # Traverse up the directory tree to find globalenvdev.config
+    # Traverse up the directory tree to find globalenv.config
     local dir
     dir=$(pwd)
     while [[ "$dir" != "/" ]]; do
@@ -54,7 +54,7 @@ initialize_configuration() {
         dir=$(dirname "$dir")
     done
 
-    log_error "globalenv.config not found"
+    log_error "globalenvdev.config not found"
     exit 1
 }
 
@@ -80,7 +80,7 @@ validate_configuration() {
 # Azure authentication and subscription setup
 setup_azure_context() {
     log_info "Checking Azure CLI authentication"
-
+    
     # Login if not already authenticated
     if ! az account show &>/dev/null; then
         log_warning "Not logged in to Azure CLI. Initiating login..."
@@ -100,33 +100,14 @@ setup_azure_context() {
     fi
 }
 
-# Check Docker permissions
-check_docker_permissions() {
-    log_info "Checking Docker permissions"
-    
-    if ! command -v docker &>/dev/null; then
-        log_error "Docker is not installed or not in PATH"
-        return 1
-    fi
-    
-    if ! docker info &>/dev/null; then
-        log_error "Cannot connect to Docker daemon. Check if Docker is running and you have proper permissions."
-        log_info "You may need to run: sudo usermod -aG docker $USER"
-        log_info "Then log out and back in, or run: newgrp docker"
-        return 1
-    fi
-    
-    log_success "Docker is available and permissions are correctly set"
-}
-
 # Prepare Azure Container Registry
 prepare_container_registry() {
     local registry_name="${ENVIRONMENT_PREFIX}${PROJECT_PREFIX}contregistry"
-
+    
     log_info "Checking Azure Container Registry: $registry_name"
-
+    
     # Check if registry exists, create if not
-    if ! az acr show --name "$registry_name" --resource-group "$PROJECT_RESOURCE_GROUP" &>/dev/null; then
+    if ! az acr show --name "$registry_name" &>/dev/null; then
         log_warning "Container Registry does not exist. Creating..."
         az acr create \
             --name "$registry_name" \
@@ -164,7 +145,7 @@ prepare_container_apps_environment() {
 
 # Build and deploy container
 deploy_container_app() {
-    local environment_name="${ENVIRONMENT_PREFIX}-${PROJECT_PREFIX}-BackendContainerAppsEnv"
+    local environment_name="${ENVIRONMENT_PREFIX}-${PROJECT_PREFIX}-frontendContainerAppsEnv"
     local container_app_name="${ENVIRONMENT_PREFIX}-${PROJECT_PREFIX}-worker"
     local registry_url="${ENVIRONMENT_PREFIX}${PROJECT_PREFIX}contregistry.azurecr.io"
     local repo_url="https://github.com/Atinga-Solutions/atinga-webapp"
@@ -181,7 +162,7 @@ deploy_container_app() {
         --branch "$branch" \
         --registry-server "$registry_url" \
         --ingress external \
-        --target-port 3000
+        --target-port 8000
 
 
     # Update container app settings
@@ -205,9 +186,6 @@ main() {
     # Configuration and setup must happen FIRST
     initialize_configuration
     validate_configuration
-
-    # Check Docker permissions before proceeding
-    check_docker_permissions
 
     # Now safe to use LOG_FOLDER
     local timestamp
