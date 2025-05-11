@@ -38,9 +38,9 @@ async function generate() {
     </urlset>
   `
 
-    const formatted = prettier.format(sitemap, {
-        ...prettierConfig,
-        parser: 'html',
+    const formatted = await prettier.format(sitemap, {
+      ...prettierConfig,
+      parser: 'html',
     })
 
     writeFileSync('public/sitemap.xml', formatted)
