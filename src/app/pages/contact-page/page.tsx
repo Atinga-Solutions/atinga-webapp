@@ -43,44 +43,49 @@ const ContactPage = () => {
       message: "",
     },
   });
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setIsSubmitting(true);
-    setSubmitResult(null);
+const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  setIsSubmitting(true);
+  setSubmitResult(null);
+  
+  try {
+    const result = await sendGeneralInquiry({
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      message: values.message,
+      subject: values.subject
+    });
     
-    try {
-      const result = await sendGeneralInquiry({
-        name: values.name,
-        email: values.email,
-        phone: values.phone,
-        message: values.message,
-        subject: values.subject
+    if (result.success) {
+      setSubmitResult({
+        success: true,
+        message: "Your message has been sent successfully! We'll be in touch soon."
       });
-      
-      if (result.success) {
-        setSubmitResult({
-          success: true,
-          message: "Your message has been sent successfully! We'll be in touch soon."
-        });
-        form.reset();
-      } else {
-        setSubmitResult({
-          success: false,
-          message: "There was a problem sending your message. Please try again."
-        });
-      }
-    } catch (error) {
+      form.reset();
+    } else {
       setSubmitResult({
         success: false,
-        message: "An unexpected error occurred. Please try again later.",
-        // @ts-ignore
-        error: error.message  
+        message: "There was a problem sending your message. Please try again."
       });
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+  } catch (error) {
+    // Check if the error is an instance of Error
+    let errorMessage = "An unexpected error occurred. Please try again later.";
+    
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
 
+    setSubmitResult({
+      success: false,
+      message: errorMessage,
+      // @ts-expect-error: We expect this line to have a potential type error
+      error: errorMessage  
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
   return (
     <div className="relative min-h-screen">
 
