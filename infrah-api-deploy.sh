@@ -116,17 +116,8 @@ prepare_container_registry() {
             --admin-enabled true
     fi
 
-    # Get ACR credentials instead of directly logging in with Docker
-    log_info "Getting ACR credentials for $registry_name"
-    local acr_username=$(az acr credential show --name "$registry_name" --query "username" -o tsv)
-    local acr_password=$(az acr credential show --name "$registry_name" --query "passwords[0].value" -o tsv)
-    
-    # Store credentials for later use
-    export ACR_USERNAME="$acr_username"
-    export ACR_PASSWORD="$acr_password"
-    export ACR_LOGIN_SERVER="${registry_name}.azurecr.io"
-    
-    log_success "Successfully retrieved ACR credentials"
+    # Login to ACR
+    az acr login --name "$registry_name"
 }
 
 # Prepare Container Apps Environment
@@ -152,45 +143,6 @@ prepare_container_apps_environment() {
     echo "Registry URL: $registry_url"
 }
 
-# Create service principal for ACR access
-create_service_principal() {
-    local registry_name="${ENVIRONMENT_PREFIX}${PROJECT_PREFIX}contregistry"
-    local sp_name="${registry_name}-service-principal"
-    
-    log_info "Creating service principal for ACR access: $sp_name"
-    
-    # Check if service principal already exists
-    local sp_id=$(az ad sp list --display-name "$sp_name" --query "[0].id" -o tsv 2>/dev/null || echo "")
-    
-    if [[ -z "$sp_id" ]]; then
-        log_warning "Service principal does not exist. Creating..."
-        
-        # Get ACR resource ID
-        local acr_id=$(az acr show --name "$registry_name" --resource-group "$PROJECT_RESOURCE_GROUP" --query "id" -o tsv)
-        
-        # Create service principal with AcrPush role
-        sp_info=$(az ad sp create-for-rbac --name "$sp_name" --scopes "$acr_id" --role "AcrPush" --query "[appId,password]" -o tsv)
-        
-        # Parse the output
-        read -r sp_app_id sp_password <<< "$sp_info"
-        
-        log_success "Service principal created with ID: $sp_app_id"
-        
-        # Store service principal credentials for later use
-        export SP_APP_ID="$sp_app_id"
-        export SP_PASSWORD="$sp_password"
-    else
-        log_info "Service principal already exists with ID: $sp_id"
-        
-        # For existing SP, we would normally need to reset credentials
-        # But this could impact other services, so we'll just note it
-        log_warning "Using existing service principal. If authentication fails, you may need to reset credentials."
-        
-        # Get the app ID for the existing service principal
-        export SP_APP_ID=$(az ad sp show --id "$sp_id" --query "appId" -o tsv)
-    fi
-}
-
 # Build and deploy container
 deploy_container_app() {
     local environment_name="${ENVIRONMENT_PREFIX}-${PROJECT_PREFIX}-BackendContainerAppsEnv"
@@ -201,7 +153,7 @@ deploy_container_app() {
 
     log_info "Deploying Container App: $container_app_name"
 
-    # Deploy container app with ACR credentials instead of relying on Docker login
+    # Deploy container app with valid parameters
     az containerapp up \
         --name "$container_app_name" \
         --resource-group "$PROJECT_RESOURCE_GROUP" \
@@ -209,10 +161,9 @@ deploy_container_app() {
         --repo "$repo_url" \
         --branch "$branch" \
         --registry-server "$registry_url" \
-        --registry-username "$ACR_USERNAME" \
-        --registry-password "$ACR_PASSWORD" \
         --ingress external \
         --target-port 3000
+
 
     # Update container app settings
     log_info "Configuring Container App scaling and resources"
@@ -241,9 +192,6 @@ main() {
     timestamp=$(date +"%Y%m%d_%H%M%S")
     local log_file="${LOG_FOLDER}/deploy_worker_${timestamp}.log"
 
-    # Ensure log directory exists
-    mkdir -p "${LOG_FOLDER}"
-
     # Redirect output to log file and console
     exec > >(tee -a "$log_file") 2>&1
 
@@ -252,7 +200,6 @@ main() {
     # Azure deployment steps
     setup_azure_context
     prepare_container_registry
-    create_service_principal
     prepare_container_apps_environment
     deploy_container_app
 

@@ -9,39 +9,39 @@
 
     <!-- Main Pages -->
     <url>
-        <loc>https://atingasolutions.com/about</loc>
+        <loc>https://atingasolutions.com/pages/about-us</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://atingasolutions.com/services</loc>
+        <loc>https://atingasolutions.com/pages/services</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://atingasolutions.com/contact</loc>
+        <loc>https://atingasolutions.com/pages/contact-page</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <!-- Service Pages -->
     <url>
-        <loc>https://atingasolutions.com/services/design</loc>
+        <loc>https://atingasolutions.com/pages/careers</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://atingasolutions.com/services/mobile</loc>
+        <loc>https://atingasolutions.com/pages/services/mobile</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://atingasolutions.com/services/web</loc>
+        <loc>https://atingasolutions.com/pages/services/web</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://atingasolutions.com/services/cloud</loc>
+        <loc>https://atingasolutions.com/pages/services/cloud</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
