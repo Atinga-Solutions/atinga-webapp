@@ -831,20 +831,20 @@ function getServiceBySlug(slug: string): DetailedService | undefined {
     return servicesData.find(service => service.slug === slug);
 }
 
+
 // Get related services by slug array
 function getRelatedServices(slugs: string[]): DetailedService[] {
     return servicesData.filter(service => slugs.includes(service.slug));
 }
+// Properly typed page props
 type ServicePageProps = {
-    params: {
-        slug: string;
-    };
+    params: Promise<{ slug: string }>;
 };
 
-
-// Page component that handles the dynamic route
+// Updated generateMetadata function with proper typing
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
-    const service = getServiceBySlug(params.slug);
+    const { slug } = await params;
+    const service = getServiceBySlug(slug);
     
     if (!service) {
         return {
@@ -859,7 +859,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 }
     // Then make sure your page component is marked as async
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
-    const service = getServiceBySlug(params.slug);
+    const {slug} = await params;
+    const service = getServiceBySlug(slug);
     
     if (!service) {
         notFound();

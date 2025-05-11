@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "postbuild": "npm run generate-sitemap",
-    "generate-sitemap": "ts-node --project tsconfig.node.json scripts/generate-sitemap.ts"
+    "generate-sitemap": "ts-node --project tsconfig.node.json ./scripts/generate-sitemap.ts"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
