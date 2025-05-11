@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import MouseMoveEffect from "@/components/mouse-move-effect"
 import Footer from "@/components/footer-section";
 import Header from "@/components/header-section";
-import {AtingaLogo, TwitterLogo} from "../../public/assets/icons/Icons";
+import { AtingaLogo, TwitterLogo } from "../../public/assets/icons/Icons";
 
 const inter = Inter({ subsets: ["latin"] })
 
