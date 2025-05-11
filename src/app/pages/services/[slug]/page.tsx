@@ -13,8 +13,8 @@ type DetailedService = {
     title: string;
     subtitle: string;
     description: string;
-    image: StaticImageData; // Assuming you're using Next.js StaticImageData for images
-    heroImage: StaticImageData; // Can be the same as image if needed
+    image: StaticImageData;
+    heroImage: StaticImageData;
     longDescription: string;
     approach: {
         title: string;
@@ -28,7 +28,7 @@ type DetailedService = {
     features: string[];
     technologies: {
         name: string;
-        logo?: string; // Optional logo path
+        logo?: string;
     }[];
     process: {
         step: string;
@@ -45,7 +45,7 @@ type DetailedService = {
         image: StaticImageData;
         link: string;
     }[];
-    relatedServices: string[]; // Slugs of related services
+    relatedServices: string[];
 };
 
 // Service data (in a real app, this would come from a CMS or API)
@@ -835,29 +835,34 @@ function getServiceBySlug(slug: string): DetailedService | undefined {
 function getRelatedServices(slugs: string[]): DetailedService[] {
     return servicesData.filter(service => slugs.includes(service.slug));
 }
+type ServicePageProps = {
+    params: {
+        slug: string;
+    };
+};
+
 
 // Page component that handles the dynamic route
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
     const service = getServiceBySlug(params.slug);
     
-
-  
     if (!service) {
         return {
-          title: 'Service Not Found'
+            title: 'Service Not Found'
         };
-      }
-      return {
+    }
+    
+    return {
         title: `${service.title} | Atinga Solutions`,
         description: service.description
-      };
-    }
+    };
+}
     // Then make sure your page component is marked as async
-export default async function ServiceDetailPage({ params }: { params: { slug: string } }) {
+export default async function ServiceDetailPage({ params }: ServicePageProps) {
     const service = getServiceBySlug(params.slug);
     
     if (!service) {
-      notFound();
+        notFound();
     }
 
     const relatedServices = getRelatedServices(service.relatedServices);
