@@ -1,44 +1,58 @@
 name: Trigger auto deployment for at-inf-worker
 
-# When this action will be executed
 on:
-  # Automatically trigger it when detected changes in repo
   push:
-    branches: 
-      [ main ]
+    branches: [ main ]
     paths:
-    - '**'
-    - '.github/workflows/at-inf-worker-AutoDeployTrigger-14bf3c64-527f-4a23-a3b8-fc1f720bb4c4.yml'
-
-  # Allow manual trigger 
+      - '**'
+      - '.github/workflows/at-inf-worker-AutoDeployTrigger-14bf3c64-527f-4a23-a3b8-fc1f720bb4c4.yml'
   workflow_dispatch:
-      
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout to the branch
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Azure Login
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` by default
+          path: |
+            ~/.npm
+            node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Login to Azure
         uses: azure/login@v1
         with:
           creds: ${{ secrets.ATINFWORKER_AZURE_CREDENTIALS }}
 
-      - name: Build and push container image to registry
+      - name: Build and push container image
         uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}
-          _dockerfilePathKey_: _dockerfilePath_
+          dockerfilePath: Dockerfile
           registryUrl: atinfcontregistry.azurecr.io
           registryUsername: ${{ secrets.ATINFWORKER_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.ATINFWORKER_REGISTRY_PASSWORD }}
           containerAppName: at-inf-worker
           resourceGroup: DevOps
           imageToBuild: atinfcontregistry.azurecr.io/at-inf-worker:${{ github.sha }}
-          
-            
-
-     
-

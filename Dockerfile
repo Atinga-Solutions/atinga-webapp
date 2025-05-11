@@ -4,27 +4,31 @@ FROM node:22.2.0
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to leverage Docker cache
+# Install dependencies (leverage Docker cache)
 COPY package*.json ./
-
-# Install project dependencies
 RUN npm install
 
-# Bundle app source inside Docker image
-COPY ./src ./src
-# Also copy the public directory which contains your assets
-COPY ./public ./public
-# Copy any configuration files needed at the root
-COPY next.config.js ./
-COPY tsconfig.json ./
-COPY tailwind.config.js ./
-COPY postcss.config.js ./
-COPY components.json ./
-COPY .env.local ./
-# Copy the .env file if it exists
+# Copy the rest of the application code
+COPY . .
 
-# Your app binds to port 3000 so you'll use the EXPOSE instruction to have it mapped by the docker daemon
+# Create necessary configuration files if they don't exist
+RUN if [ ! -f next.config.js ]; then \
+    echo "/** @type {import('next').NextConfig} */\nconst nextConfig = {};\nmodule.exports = nextConfig;" > next.config.js; \
+fi
+
+RUN if [ ! -f tailwind.config.js ]; then \
+    echo "/** @type {import('tailwindcss').Config} */\nmodule.exports = {\n  content: ['./src/**/*.{js,ts,jsx,tsx}'],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n};" > tailwind.config.js; \
+fi
+
+RUN if [ ! -f postcss.config.js ]; then \
+    echo "module.exports = {\n  plugins: {\n    tailwindcss: {},\n    autoprefixer: {},\n  },\n};" > postcss.config.js; \
+fi
+
+# Expose the port the app runs on
 EXPOSE 3000
 
-# Define the command to run your app using CMD which defines your runtime
+# Build the Next.js application
+RUN npm run build
+
+# Command to run the application
 CMD ["npm", "run", "dev"]
