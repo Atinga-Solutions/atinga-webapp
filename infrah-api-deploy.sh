@@ -42,19 +42,19 @@ trap 'handle_error $LINENO "$BASH_COMMAND"' ERR
 
 # Configuration and Initialization
 initialize_configuration() {
-    # Traverse up the directory tree to find globalenv.config
+    # Traverse up the directory tree to find globalenvdev.config
     local dir
     dir=$(pwd)
     while [[ "$dir" != "/" ]]; do
-        if [[ -f "$dir/globalenv.config" ]]; then
+        if [[ -f "$dir/globalenvdev.config" ]]; then
             # shellcheck source=/dev/null
-            source "$dir/globalenv.config"
+            source "$dir/globalenvdev.config"
             return 0
         fi
         dir=$(dirname "$dir")
     done
 
-    log_error "globalenv.config not found"
+    log_error "globalenvdev.config not found"
     exit 1
 }
 
@@ -80,7 +80,7 @@ validate_configuration() {
 # Azure authentication and subscription setup
 setup_azure_context() {
     log_info "Checking Azure CLI authentication"
-    
+
     # Login if not already authenticated
     if ! az account show &>/dev/null; then
         log_warning "Not logged in to Azure CLI. Initiating login..."
@@ -103,9 +103,9 @@ setup_azure_context() {
 # Prepare Azure Container Registry
 prepare_container_registry() {
     local registry_name="${ENVIRONMENT_PREFIX}${PROJECT_PREFIX}contregistry"
-    
+
     log_info "Checking Azure Container Registry: $registry_name"
-    
+
     # Check if registry exists, create if not
     if ! az acr show --name "$registry_name" &>/dev/null; then
         log_warning "Container Registry does not exist. Creating..."
@@ -148,7 +148,7 @@ deploy_container_app() {
     local environment_name="${ENVIRONMENT_PREFIX}-${PROJECT_PREFIX}-BackendContainerAppsEnv"
     local container_app_name="${ENVIRONMENT_PREFIX}-${PROJECT_PREFIX}-worker"
     local registry_url="${ENVIRONMENT_PREFIX}${PROJECT_PREFIX}contregistry.azurecr.io"
-    local repo_url="https://github.com/Atinga-Solutions/atinga-infrah-prototype-web"
+    local repo_url="https://github.com/Atinga-Solutions/atinga-webapp"
     local branch="main"
 
     log_info "Deploying Container App: $container_app_name"

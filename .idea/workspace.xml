@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4bd3b25-4a38-4551-8cc6-95ec9fb38c28" name="Changes" comment="feat: Update footer and page components with new leadership profiles and contact information">
-      <change afterPath="$PROJECT_DIR$/public/assets/icons/sl_z_072523_61700_05.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sitemap.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/generate-sitemap.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/icons/Icons.ts" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/icons/Icons.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/globalenv.config" beforeDir="false" afterPath="$PROJECT_DIR$/globalenv.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrah-api-deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/infrah-api-deploy.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +50,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHELLCHECK.PATH": "/home/collins-king/.local/share/JetBrains/WebStorm2025.1/Shell Script/shellcheck",
     "git-widget-placeholder": "main",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
@@ -113,7 +108,7 @@
       <workItem from="1746904802119" duration="1063000" />
       <workItem from="1746926487050" duration="638000" />
       <workItem from="1746927390991" duration="493000" />
-      <workItem from="1746927899555" duration="3870000" />
+      <workItem from="1746927899555" duration="5390000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Update footer and page components with new leadership profiles and contact information">
       <option name="closed" value="true" />
