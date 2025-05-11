@@ -4,18 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bd3b25-4a38-4551-8cc6-95ec9fb38c28" name="Changes" comment="" />
+    <list default="true" id="d4bd3b25-4a38-4551-8cc6-95ec9fb38c28" name="Changes" comment="feat: Update footer and page components with new leadership profiles and contact information">
+      <change afterPath="$PROJECT_DIR$/public/assets/icons/sl_z_072523_61700_05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/sitemap.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/generate-sitemap.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/icons/Icons.ts" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/icons/Icons.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="cm-collins &lt;dev-collins@outlook.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "cm-collins"
+  }
+}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/Atinga-Solutions/atinga-infrah-prototype-web.git",
+    "url": "https://github.com/Atinga-Solutions/atinga-webapp.git",
     "accountId": "eb221541-4581-4c5c-9abc-fb2aefd6e7b3"
   }
 }]]></component>
@@ -54,6 +75,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/assets/images" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/assets/icons" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
@@ -89,8 +113,17 @@
       <workItem from="1746904802119" duration="1063000" />
       <workItem from="1746926487050" duration="638000" />
       <workItem from="1746927390991" duration="493000" />
-      <workItem from="1746927899555" duration="2224000" />
+      <workItem from="1746927899555" duration="3870000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: Update footer and page components with new leadership profiles and contact information">
+      <option name="closed" value="true" />
+      <created>1746930159822</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746930159822</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,5 +139,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: Update footer and page components with new leadership profiles and contact information" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Update footer and page components with new leadership profiles and contact information" />
   </component>
 </project>
