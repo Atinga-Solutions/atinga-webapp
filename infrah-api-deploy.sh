@@ -100,6 +100,27 @@ setup_azure_context() {
     fi
 }
 
+# Service principal creation function
+create_service_principal() {
+    local sp_name="${ENVIRONMENT_PREFIX}-${PROJECT_PREFIX}-sp"
+    
+    # Check if service principal already exists
+    if ! az ad sp show --id http://"$sp_name" &>/dev/null; then
+        log_info "Creating service principal: $sp_name"
+        
+        # Create service principal with contributor role
+        az ad sp create-for-rbac \
+            --name "$sp_name" \
+            --role contributor \
+            --scopes "/subscriptions/${PROJECT_SUBSCRIPTION_ID}/resourceGroups/${PROJECT_RESOURCE_GROUP}" \
+            --sdk-auth
+            
+        log_success "Service principal created: $sp_name"
+    else
+        log_info "Using existing service principal: $sp_name"
+    fi
+}
+
 # Prepare Azure Container Registry
 prepare_container_registry() {
     local registry_name="${ENVIRONMENT_PREFIX}${PROJECT_PREFIX}contregistry"
@@ -164,7 +185,6 @@ deploy_container_app() {
         --ingress external \
         --target-port 8000
 
-
     # Update container app settings
     log_info "Configuring Container App scaling and resources"
     az containerapp update \
@@ -174,11 +194,6 @@ deploy_container_app() {
         --memory 0.5Gi \
         --min-replicas 1 \
         --max-replicas 10
-
-    # Optional: Disable public ingress if internal service
-    # az containerapp ingress disable \
-    #     --name "$container_app_name" \
-    #     --resource-group "$PROJECT_RESOURCE_GROUP"
 }
 
 # Main deployment workflow
@@ -200,6 +215,7 @@ main() {
     # Azure deployment steps
     setup_azure_context
     prepare_container_registry
+    create_service_principal  # Added service principal creation
     prepare_container_apps_environment
     deploy_container_app
 
