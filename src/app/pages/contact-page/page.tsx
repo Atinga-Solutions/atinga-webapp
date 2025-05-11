@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, { useState } from 'react';
@@ -16,14 +15,9 @@ import {
   Mail, 
   PhoneCall, 
   Clock, 
-  MessageSquare, 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  Users, 
   HelpCircle,
-  Building,
   CheckCircle
 } from 'lucide-react';
-import Image from 'next/image';
 import { sendGeneralInquiry } from '@/utils/careers-email-config';
 
 const formSchema = z.object({
