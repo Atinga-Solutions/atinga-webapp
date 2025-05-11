@@ -12,6 +12,16 @@ RUN npm install
 
 # Bundle app source inside Docker image
 COPY ./src ./src
+# Also copy the public directory which contains your assets
+COPY ./public ./public
+# Copy any configuration files needed at the root
+COPY next.config.js ./
+COPY tsconfig.json ./
+COPY tailwind.config.js ./
+COPY postcss.config.js ./
+COPY components.json ./
+COPY .env.local ./
+# Copy the .env file if it exists
 
 # Your app binds to port 3000 so you'll use the EXPOSE instruction to have it mapped by the docker daemon
 EXPOSE 3000

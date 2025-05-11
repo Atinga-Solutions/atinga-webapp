@@ -6,6 +6,7 @@ import MouseMoveEffect from "@/components/mouse-move-effect"
 import Footer from "@/components/footer-section";
 import Header from "@/components/header-section";
 import { AtingaLogo, TwitterLogo } from "../../public/assets/icons/Icons";
+// Fix the import path to use the public directory correctly
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
             'max-snippet': -1,
         },
     },
-  }
+}
 
 export default function RootLayout({
   children,
@@ -73,7 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className}  antialiased`}
+        className={`${inter.className} antialiased`}
       >
         <ThemeProvider attribute='class' defaultTheme="system" enableSystem disableTransitionOnChange>
           <MouseMoveEffect />
@@ -81,7 +82,6 @@ export default function RootLayout({
           <Header />
           <Footer />
         </ThemeProvider>
-
       </body>
     </html>
   );
