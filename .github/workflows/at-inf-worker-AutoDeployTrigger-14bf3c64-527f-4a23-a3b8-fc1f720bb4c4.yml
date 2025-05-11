@@ -1,0 +1,44 @@
+name: Trigger auto deployment for at-inf-worker
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/at-inf-worker-AutoDeployTrigger-14bf3c64-527f-4a23-a3b8-fc1f720bb4c4.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.ATINFWORKER_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          appSourcePath: ${{ github.workspace }}
+          _dockerfilePathKey_: _dockerfilePath_
+          registryUrl: atinfcontregistry.azurecr.io
+          registryUsername: ${{ secrets.ATINFWORKER_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.ATINFWORKER_REGISTRY_PASSWORD }}
+          containerAppName: at-inf-worker
+          resourceGroup: DevOps
+          imageToBuild: atinfcontregistry.azurecr.io/at-inf-worker:${{ github.sha }}
+          
+            
+
+     
+
