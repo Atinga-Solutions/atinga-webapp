@@ -21,13 +21,13 @@ export default function HeroSection() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 pt-4">
                         <Link
-                            href="/pages/demo"
+                            href="/pages/contact-page"
                             className="bg-gradient-primary text-primary-foreground font-medium py-3 px-6 rounded-lg shadow-md hover-scale inline-flex items-center justify-center"
                         >
                             Request Demo
                         </Link>
                         <Link
-                            href="/pages/projects"
+                            href="/pages/services"
                             className="bg-secondary text-secondary-foreground border border-border py-3 px-6 rounded-lg inline-flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
                         >
                             Explore Solutions

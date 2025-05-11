@@ -73,11 +73,11 @@ export default function Footer() {
             </p>
             <div className="flex flex-col space-y-3">
               <div className="flex items-center">
-                <div className="bg-blue-100 dark:bg-blue-800 p-2 rounded-full mr-3">
-                  <MapPin className="h-5 w-5 text-primary" />
+                {/*<div className="bg-blue-100 dark:bg-blue-800 p-2 rounded-full mr-3">*/}
+                  {/*<MapPin className="h-5 w-5 text-primary" />*/}
                 </div>
-                <span className="text-blue-800 dark:text-blue-100">123 Tech Plaza, Suite 100, San Francisco, CA 94105</span>
-              </div>
+                {/*<span className="text-blue-800 dark:text-blue-100">123 Tech Plaza, Suite 100, San Francisco, CA 94105</span>*/}
+              {/*</div>*/}
               <div className="flex items-center">
                 <div className="bg-blue-100 dark:bg-blue-800 p-2 rounded-full mr-3">
                   <Phone className="h-5 w-5 text-primary" />

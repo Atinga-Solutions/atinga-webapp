@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bd3b25-4a38-4551-8cc6-95ec9fb38c28" name="Changes" comment="" />
+    <list default="true" id="d4bd3b25-4a38-4551-8cc6-95ec9fb38c28" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/images/photo_2025-05-11_05-03-16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/photo_2025-05-11_05-03-21.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/Images.ts" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/Images.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/about-us/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/about-us/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/contact-page/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/contact-page/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer-section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hero-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hero-section.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,10 +23,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2wF3H19uv3FvXEx8UCHT4vDlFCr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -26,14 +42,23 @@
     "git-widget-placeholder": "main",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "/home/devopsadmin/Documents/Dev-Works/Atinga-solutions/atinga-infrah-prototype-web",
+    "last_opened_file_path": "/home/collins-king/Development-projects/atinga-infrah-prototype-web/public/assets/images",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/home/devopsadmin/Documents/Dev-Works/Atinga-solutions/atinga-infrah-prototype-web/node_modules/typescript/lib",
+    "npm.Next.js: server-side.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/home/collins-king/Development-projects/atinga-infrah-prototype-web/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/assets/images" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
@@ -52,7 +77,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-WS-251.23774.424" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117" />
       </set>
     </attachedChunks>
   </component>
@@ -64,10 +89,26 @@
       <option name="presentableId" value="Default" />
       <updated>1745623403037</updated>
       <workItem from="1745623404511" duration="198000" />
+      <workItem from="1746904433706" duration="173000" />
+      <workItem from="1746904802119" duration="1063000" />
+      <workItem from="1746926487050" duration="638000" />
+      <workItem from="1746927390991" duration="493000" />
+      <workItem from="1746927899555" duration="1887000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

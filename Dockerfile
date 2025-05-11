@@ -1,18 +1,16 @@
-# Specify the base image
-FROM node:22.2.0
-
-# Set the working directory in the container
+# Build stage
+FROM node:22.2.0 AS builder
 WORKDIR /app
-
-# Copy package.json and package-lock.json to leverage Docker cache
 COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
 
-# Install project dependencies
-RUN npm install
-
-# Bundle app source inside Docker image
-COPY ./src ./src
-
-# Your app binds to port 3000 so you'll use the EXPOSE instruction to have it mapped by the docker daemon
+# Production stage
+FROM node:22.2.0-slim
+WORKDIR /app
+COPY --from=builder /app/build ./build
+COPY package*.json ./
+RUN npm ci --production
 EXPOSE 3000
-
+CMD ["npm", "start"]

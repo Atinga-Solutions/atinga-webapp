@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import {CtoImage, CeoImage} from "../../../../public/assets/images/Images";
 
 const AboutUs = () => {
   return (
@@ -87,6 +88,7 @@ const AboutUs = () => {
         </section>
 
         {/* Our Story Section */}
+        {/* Our Story Section */}
         <section className="py-16 px-4 bg-muted/30">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
@@ -96,17 +98,62 @@ const AboutUs = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1 animate-fade-in">
-                <p className="text-lg mb-6">
-                  Atinga Solutions was founded in 2013 with a clear mission: to bridge the digital infrastructure gap across Africa and empower businesses through innovative technology solutions.
-                </p>
-                <p className="text-lg mb-6">
-                  What began as a small team of passionate engineers has grown into a leading technology company with offices in multiple countries, serving clients across East Africa and beyond.
-                </p>
-                <p className="text-lg">
-                  Our name, Atinga means foundation in Swahili, reflecting our commitment to building strong technological foundations that support sustainable growth and digital transformation for our clients.
-                </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div className="order-2 lg:order-1 animate-fade-in space-y-6">
+                <div className="space-y-6 mb-10">
+                  <p className="text-lg">
+                    Atinga Solutions was founded in 2013 with a clear mission: to bridge the digital infrastructure gap across Africa and empower businesses through innovative technology solutions.
+                  </p>
+                  <p className="text-lg">
+                    What began as a small team of passionate engineers has grown into a leading technology company with offices in multiple countries, serving clients across East Africa and beyond.
+                  </p>
+                  <p className="text-lg">
+                    Our name, Atinga means foundation in Swahili, reflecting our commitment to building strong technological foundations that support sustainable growth and digital transformation for our clients.
+                  </p>
+                </div>
+
+                {/* Leadership Profiles */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+                  {/* CEO Profile */}
+                  <div className="bg-card rounded-xl p-6 hover:shadow-lg transition-all">
+                    <div className="relative w-28 h-28 mx-auto mb-4">
+                      <Image
+                          src={CeoImage}
+                          alt="CEO"
+                          fill
+                          className="object-cover rounded-full border-4 border-primary/20"
+                          unoptimized
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h3 className="text-xl font-semibold mb-1">Victor Mutethia</h3>
+                      <p className="text-primary font-medium mb-3">CEO & Founder</p>
+                      <p className="text-muted-foreground text-sm">
+                        With  8+ years in tech infrastructure, John leads our vision to transform Africa's digital landscape.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* CTO Profile */}
+                  <div className="bg-card rounded-xl p-6 hover:shadow-lg transition-all">
+                    <div className="relative w-28 h-28 mx-auto mb-4">
+                      <Image
+                          src={CtoImage}
+                          alt="CTO"
+                          fill
+                          className="object-cover rounded-full border-4 border-primary/20"
+                          unoptimized
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h3 className="text-xl font-semibold mb-1">Collins Munene</h3>
+                      <p className="text-primary font-medium mb-3">CTO</p>
+                      <p className="text-muted-foreground text-sm">
+                        A cloud computing expert with a track record of implementing cutting-edge solutions across Africa.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="order-1 lg:order-2 animate-fade-in" style={{ animationDelay: '0.3s' }}>

@@ -303,7 +303,7 @@ const ContactPage = () => {
                           <div className="space-y-3">
                             <div className="flex items-center gap-2">
                               <Mail className="h-4 w-4 text-primary" />
-                              <a href="mailto:support@atinga.co.ke" className="text-primary hover:underline">support@atinga.co.ke</a>
+                              <a href="mailto:atingasolutins@gmail.com" className="text-primary hover:underline">atingasolutions@gmail.com  </a>
                             </div>
                             <div className="flex items-center gap-2">
                               <PhoneCall className="h-4 w-4 text-primary" />
@@ -326,7 +326,7 @@ const ContactPage = () => {
                           <div className="space-y-3">
                             <div className="flex items-center gap-2">
                               <Mail className="h-4 w-4 text-primary" />
-                              <a href="mailto:sales@atinga.co.ke" className="text-primary hover:underline">sales@atinga.com</a>
+                              <a href="mailto:sales@atinga.co.ke" className="text-primary hover:underline">atingasolutions@gmail.com</a>
                             </div>
                             <div className="flex items-center gap-2">
                               <PhoneCall className="h-4 w-4 text-primary" />
